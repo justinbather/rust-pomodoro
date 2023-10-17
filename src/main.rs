@@ -37,6 +37,7 @@ fn main() {
 
 
     // Prints correctly
+    //
     println!("{:?}", current);
 
     loop {
