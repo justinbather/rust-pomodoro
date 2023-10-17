@@ -1,14 +1,23 @@
 /*
-* TODO: create MVP: start program, set focus_duration for x time and alert os
+TODO: create MVP: start program, set focus_duration for x time and alert os
+TODO: CLI Timer
+TODO: Timer Logic
 
 
 
 */
+
+/*
+* Usage: cargo run -- {intervals} {focus_duration} {break_duration} 
+* Intervals must be greater than 1
+* Focus Duration & Break Duration must be longer than 1000ms
+*/
 use std::env;
-use std::io;
-use std::process;
-use std::time;
+// use std::io;
+// use std::process;
+
 mod config;
+mod timer;
 
 fn main(){
 
@@ -17,25 +26,29 @@ fn main(){
 
     let config = config::Config::new(&args).unwrap();
 
-    let current = time::Instant::now();
+    // let current = time::Instant::now();
 
-    let duration: u64 = config.focus_duration / 1000;
+    
 
+    
 
-
-    // Prints correctly
-    //
-    // println!("{:?}", current);
 
     println!("Stating Pomodoro: {} intervals of {} focus and {} break", config.intervals, config.focus_duration, config.break_duration);
-    loop {
+
+    timer::start_pomodoro(config)
+
+    // while remaining_intervals > 0 {
+
         
-        if current.elapsed().as_secs() >= duration {
-            break;
-        }
-    }
+        
+    //     if current.elapsed().as_secs() >= config.focus_duration {
+    //         break;
+    //     }
+    // }
+
     
-    println!("focus_duration finished after {:?}", current.elapsed().as_secs());
+    
+    // println!("focus_duration finished after {:?}", current.elapsed().as_secs());
     
     
 }
