@@ -5,7 +5,7 @@ use std::time;
 use crate::config;
 
 pub fn start_pomodoro(config: config::Config) {
-    for interval in 0..3 {
+    for interval in 0..config.intervals {
         println!("Starting interval: {:?}", interval);
         let current = time::Instant::now();
         loop {
